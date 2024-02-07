@@ -1,141 +1,74 @@
 
-//This Program is created for calculating  C.G.P.A of 3 subjects
+
 #include<iostream>
-#include<string>
+#include<string.h>
 #include<iomanip>
 using namespace std;
-int main()
-{
-    string StudentId,StudentName;
-    int Semester,TheoryMarks[3],PracticalMarks[3];
-    string SubjectName[3],TLetterGrade[3],PLetterGrade[3];
-    int i,TGradepoint[3],PGradepoint[3],GradeTotal=0;
-    float SGPA;
-    cout<<"Enter Id of the Student:";
-    cin>>StudentId;
-    fflush(stdin);
-    cout<<"Enter The Name of the Student:";
-    cin>>StudentName;
-    cout<<"Enter The Semester of the Student:";
-    cin>>Semester;
-    for ( i = 0; i < 3; i++)
-    {
-        /* code */
-        cout<<"Enter The Name of the Subject:"<<i+1<<":";
+
+int main(){
+    string stdid;
+    cout<<"Enter Student ID : ";
+    cin>>stdid;
+    string stdname;
+    cout<<"Enter Student Name : ";
+    cin>>stdname;
+    int sem;
+    cout<<"Semester: ";
+    cin>> sem;
+    int numsub;
+    cout<<"No. of Subject : ";
+    cin>>numsub;
+    string sub[numsub];
+    int theory[numsub];
+    int practical[numsub];
+    int theorygradepoint[numsub];
+    int practicalgradepoint[numsub];
+    string gradetheory[numsub];
+    string gradepractical[numsub];
+    int credit = 3;
+    float sgpanum;
+    float sgpa;
+   
+    for(int i=0;i<numsub;i++){
+        cout<<"Name of Subject : ";
         fflush(stdin);
-        getline(cin,SubjectName[i]);
-        cout<<"Enter The Theory Marks of the Subject:"<<i+1<<":";
-         fflush(stdin);
-        cin>>TheoryMarks[i];
-        cout<<"Enter The Practical Marks of the Subject:"<<i+1<<":";
-         fflush(stdin);
-        cin>>PracticalMarks[i];
-    }
-    for ( i = 0; i < 3; i++)
-    {
-        /* code */
-        if(TheoryMarks[i]>=80)
-        {
-          TLetterGrade[i]="AA";
-          TGradepoint[i]=10;
-        }
-        else if (TheoryMarks[i]>=73&&TheoryMarks[i]<80)
-        {
-          TLetterGrade[i]="AB";
-          TGradepoint[i]=9;
-        }
-        else if (TheoryMarks[i]>=66&&TheoryMarks[i]<73)
-        {
-          TLetterGrade[i]="BB";
-          TGradepoint[i]=8;
-        }
-        else if (TheoryMarks[i]>=60&&TheoryMarks[i]<66)
-        {
-          TLetterGrade[i]="BC";
-          TGradepoint[i]=7;
-        }
-         else if (TheoryMarks[i]>=55&&TheoryMarks[i]<60)
-        {
-          TLetterGrade[i]="CC";
-          TGradepoint[i]=6;
-        }
-         else if (TheoryMarks[i]>=50&&TheoryMarks[i]<55)
-        {
-          TLetterGrade[i]="CD";
-          TGradepoint[i]=5;
-        }
-         else if (TheoryMarks[i]>=45&&TheoryMarks[i]<50)
-        {
-          TLetterGrade[i]="DD";
-          TGradepoint[i]=4;
-        }
-        else
-        {
-            TLetterGrade[i]="FF";
-            TGradepoint[i]=0;
-        }
-        GradeTotal+=4*TGradepoint[i];
+        getline(cin,sub[i]);
 
-    }
-    for ( i = 0; i < 3; i++)
-    {
-        /* code */
-        if(PracticalMarks[i]>=80)
-        {
-          PLetterGrade[i]="AA";
-          PGradepoint[i]=10;
-        }
-        else if (PracticalMarks[i]>=73&&PracticalMarks[i]<80)
-        {
-          PLetterGrade[i]="AB";
-          PGradepoint[i]=9;
-        }
-        else if (PracticalMarks[i]>=66&&PracticalMarks[i]<73)
-        {
-          PLetterGrade[i]="BB";
-          PGradepoint[i]=8;
-        }
-        else if (PracticalMarks[i]>=60&&PracticalMarks[i]<66)
-        {
-          PLetterGrade[i]="BC";
-          PGradepoint[i]=7;
-        }
-         else if (PracticalMarks[i]>=55&&PracticalMarks[i]<60)
-        {
-          PLetterGrade[i]="CC";
-          PGradepoint[i]=6;
-        }
-         else if (PracticalMarks[i]>=50&&PracticalMarks[i]<55)
-        {
-          PLetterGrade[i]="CD";
-          PGradepoint[i]=5;
-        }
-         else if (PracticalMarks[i]>=45&&PracticalMarks[i]<50)
-        {
-          PLetterGrade[i]="DD";
-          PGradepoint[i]=4;
-        }
-        else
-        {
-          PLetterGrade[i]="FF";
-          PGradepoint[i]=0;
-        }
-        GradeTotal+=4*PGradepoint[i];
-    }
-    SGPA=GradeTotal/24;
-    cout<<endl<<endl;
-    cout<<"Student Id"<<setw(12)<<":"<<setw(5)<<" "<<setw(-10)<<StudentId<<endl;
-    cout<<"Student Name"<<setw(10)<<":"<<setw(5)<<" "<<setw(-10)<<StudentName<<endl;
-    cout<<"Semester"<<setw(14)<<":"<<setw(5)<<" "<<setw(-10)<<Semester<<endl;
-    cout<<endl<<endl;
-    cout<<setw(35)<<" "<<setw(-10)<<"Theory"<<setw(7)<<" "<<"Practical"<<endl;
-    cout<<SubjectName[0]<<setw(18)<<" "<<TLetterGrade[0]<<setw(13)<<PLetterGrade[0]<<endl;
-    cout<<SubjectName[1]<<setw(16)<<" "<<TLetterGrade[1]<<setw(13)<<PLetterGrade[1]<<endl;
-    cout<<SubjectName[2]<<setw(10)<<" "<<TLetterGrade[2]<<setw(13)<<PLetterGrade[2]<<endl;
-    cout<<endl<<endl;
-    cout<<"S.G.P.A"<<setw(14)<<":"<<setw(5)<<SGPA;
+        cout<<"Theory Marks of "<<sub[i]<<" : ";
+        cin>>theory[i];
+        if(theory[i]>=80){ gradetheory[i] = "AA"; theorygradepoint[i]=10;}
+        else if(theory[i]>=80){ gradetheory[i] = "AA"; theorygradepoint[i]=9;}
+        else if(theory[i]<80 && 73<=theory[i]){gradetheory[i] = "BB"; theorygradepoint[i]=8;}
+        else if(theory[i]<66 && 60<=theory[i]){ gradetheory[i] = "BC"; theorygradepoint[i]=7;}
+        else if(theory[i]<60 && 55<=theory[i]){ gradetheory[i] = "CC"; theorygradepoint[i]=6;}
+        else if(theory[i]<55 && 50<=theory[i]){ gradetheory[i] = "CD"; theorygradepoint[i]=5;}
+        else if(theory[i]<50 && 45<=theory[i]){ gradetheory[i] = "DD"; theorygradepoint[i]=4;}
+        else if(theory[i]<45){ gradetheory[i] = "FF"; theorygradepoint[i]=0;}
+      
+        sgpanum += credit*theorygradepoint[i];
 
-return 0;
+        cout<<"Practical Marks of "<<sub[i]<<" : ";
+        cin>>practical[i];
+        if(practical[i]>=80){ gradepractical[i] = "AA"; practicalgradepoint[i]=10;}
+        else if(practical[i]>=80){ gradepractical[i] = "AA"; practicalgradepoint[i]=9;}
+        else if(practical[i]<80 && 73<=practical[i]){gradepractical[i] = "BB"; practicalgradepoint[i]=8;}
+        else if(practical[i]<66  && 60<=practical[i]){ gradepractical[i] = "BC"; practicalgradepoint[i]=7;}
+        else if(practical[i]<60 && 55<=practical[i]){ gradepractical[i] = "CC"; practicalgradepoint[i]=6;}
+        else if(practical[i]<55 && 50<=practical[i]){ gradepractical[i] = "CD"; practicalgradepoint[i]=5;}
+        else if(practical[i]<50 &&45<=practical[i]){ gradepractical[i] = "DD"; practicalgradepoint[i]=4;}
+        else if(practical[i]<45){ gradepractical[i] = "FF"; practicalgradepoint[i]=0;}
+
+        sgpanum += credit*practicalgradepoint[i];
+    }
+        sgpa = sgpanum/(2*credit*numsub) ;
+        cout<<""<<endl;
+        cout<<"Student ID   : "<<stdid<<endl;
+        cout<<"Student Name : "<<stdname<<endl;
+        cout<<"Semester     : "<<sem<<endl;
+        cout<<setw(50)<<"Theory"<<setw(15)<<"Practical"<<endl;
+    for(int i=0;i<numsub;i++){
+        cout<<sub[i]<<setw(50-sub[i].length())<<gradetheory[i]<<setw(10)<<gradepractical[i]<<endl;
+    }
+         cout<<"SGPA : "<<sgpa<<endl<<endl<<"23CE051DARSHAN KACHHIYA;
+ 
 }
-
-
